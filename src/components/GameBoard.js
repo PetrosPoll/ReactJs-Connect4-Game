@@ -186,8 +186,8 @@ const GameBoard = () => {
   const winnerChecking = (rowIndex, columnIndex) => {
     return (
       checkHorizontal( rowIndex, columnIndex ) ||
-      checkVertical( rowIndex, columnIndex )
-      || checkDiagonal(rowIndex, columnIndex)
+      checkVertical( rowIndex, columnIndex )|| 
+      checkDiagonal(rowIndex, columnIndex)
     );
   };
 
