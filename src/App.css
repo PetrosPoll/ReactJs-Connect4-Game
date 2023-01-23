@@ -71,3 +71,14 @@ h1 {
 .winningCells {
   background-color: black;
 }
+
+.error {
+  text-align: center;
+  color: red;
+  background-color:white;
+  border-radius: 5px;
+  border: '1px solid black';
+  margin-left: 55px;
+  width: 250px;
+  font-weight: bold;
+}
