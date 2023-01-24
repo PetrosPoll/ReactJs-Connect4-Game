@@ -151,13 +151,20 @@ const GameBoard = () => {
 
       let row = board.rows[rowIndex];
       let consecutiveDiagonalRight = 0;
+      let consecutiveDiagonalLeft = 0;
+      let difference = rowIndex - columnIndex
+      let startPointColumn = 0;
+      let startPointRow = 0;
       let counter = 0;
-      let counter2 = 0;
+
+      if(difference > 0)
+        startPointRow = difference
+      else if (difference !== 0)
+        startPointColumn = (Math.abs(difference) -1 );
 
       // check diagonal right
-      if (columnIndex + counter < 6) {
-          for (let r = 0; r < 6; r++) {
-              if (board.rows[r].columns[columnIndex + counter].player === row.columns[columnIndex].player) {
+          for (let r = 5; r > -1; r--) {
+              if (board.rows[r]?.columns[columnIndex + counter]?.player === row.columns[columnIndex]?.player) {
                   consecutiveDiagonalRight++;
                   counter++;
                   if (consecutiveDiagonalRight >= 4) {
@@ -167,19 +174,17 @@ const GameBoard = () => {
               else
                   consecutiveDiagonalRight = 0;
           }
-      }
 
       // check diagonal left
       for (let r = 0; r < 6; r++) {
-          if (board.rows[r].columns[columnIndex + counter2].player === row.columns[columnIndex].player) {
-              consecutiveDiagonalRight++;
-              counter2--;
-              if (consecutiveDiagonalRight >= 4) {
+          if ((board.rows[r + startPointRow]?.columns[r + startPointColumn]?.player === row.columns[columnIndex]?.player)) {
+              consecutiveDiagonalLeft++;
+              if (consecutiveDiagonalLeft >= 4) {
                   return true;
                 }
             }
             else
-              consecutiveDiagonalRight = 0;
+              consecutiveDiagonalLeft = 0;
       }
     }
 
