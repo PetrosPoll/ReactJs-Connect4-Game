@@ -152,6 +152,7 @@ const GameBoard = () => {
       let row = board.rows[rowIndex];
       let consecutiveDiagonalRight = 0;
       let counter = 0;
+      let counter2 = 0;
 
       // check diagonal right
       if (columnIndex + counter < 6) {
@@ -170,9 +171,9 @@ const GameBoard = () => {
 
       // check diagonal left
       for (let r = 0; r < 6; r++) {
-          if (board.rows[r].columns[columnIndex + counter].player === row.columns[columnIndex].player) {
+          if (board.rows[r].columns[columnIndex + counter2].player === row.columns[columnIndex].player) {
               consecutiveDiagonalRight++;
-              counter--;
+              counter2--;
               if (consecutiveDiagonalRight >= 4) {
                   return true;
                 }
